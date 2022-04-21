@@ -76,3 +76,14 @@ timestamp=2022-04-14-21.20.16.180353;
   client workstation name=10.254.16.67;
   instance name=db2inst1;
   hostname=c-db2u-dv-db2u-0.c-db2u-dv-db2u-internal.wkc.svc.cluster.local;
+
+
+CPD healthcheck Prometheus url
+oc get routes -n openshift-monitoring
+NAME                HOST/PORT                                                              PATH   SERVICES            PORT    TERMINATION          WILDCARD
+alertmanager-main   alertmanager-main-openshift-monitoring.apps.ganymade.cp.fyre.ibm.com          alertmanager-main   web     reencrypt/Redirect   None
+grafana             grafana-openshift-monitoring.apps.ganymade.cp.fyre.ibm.com                    grafana             https   reencrypt/Redirect   None
+prometheus-k8s      prometheus-k8s-openshift-monitoring.apps.ganymade.cp.fyre.ibm.com             prometheus-k8s      web     reencrypt/Redirect   None
+thanos-querier      thanos-querier-openshift-monitoring.apps.ganymade.cp.fyre.ibm.com             thanos-querier      web     reencrypt/Redirect   None
+
+oc get routes -n openshift-monitoring | grep 'prom\|graf'
