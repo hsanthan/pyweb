@@ -1,11 +1,26 @@
 get bearer token
+---------------
 curl -k -X POST -H "cache-control: no-cache" -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"password\"}" "https://cpd-wkc.apps.ganymade.cp.fyre.ibm.com//icp4d-api/v1/authorize"
 
 watson data api -get categories with bearer token
+-------------------------------------------------
 curl -i -X GET https://cpd-wkc.apps.ganymade.cp.fyre.ibm.com/v3/categories -H  "accept: */*" -H  "Content-Type: */*" -H "Authorization: Bearer ${TOKEN}" -k
 
+DV BigSQL login
+---------------
+oc login https://api.ganymade.cp.fyre.ibm.com:6443 -u kubeadmin -p tgqgw-qETo9-LDzmj-2PXnN
+oc get pods | grep dv
+oc rsh c-db2u-dv-db2u-0 
+su - db2inst1
+db2 list db directory
+db2 "select * from syscat.schemata"
+db2 connect to BIGSQL
+db2 "connect to BIGSQL user ADMIN using password”
+db2 "select * from admin.tab1"
+db2 "select * from BIGSQL.locations"
 
 DB2 Audit in DV BigSQL
+---------------
 [root@api.ganymade.cp.fyre.ibm.com ~]# oc rsh c-db2u-dv-db2u-0  
 Defaulted container "db2u" out of: db2u, instdb (init), init-labels (init), init-kernel (init)
 sh-4.4$ su - db2inst1
@@ -76,9 +91,12 @@ timestamp=2022-04-14-21.20.16.180353;
   client workstation name=10.254.16.67;
   instance name=db2inst1;
   hostname=c-db2u-dv-db2u-0.c-db2u-dv-db2u-internal.wkc.svc.cluster.local;
+  
+  
 
 
 CPD healthcheck Prometheus url
+-------------------------------
 oc get routes -n openshift-monitoring
 NAME                HOST/PORT                                                              PATH   SERVICES            PORT    TERMINATION          WILDCARD
 alertmanager-main   alertmanager-main-openshift-monitoring.apps.ganymade.cp.fyre.ibm.com          alertmanager-main   web     reencrypt/Redirect   None
