@@ -105,3 +105,18 @@ prometheus-k8s      prometheus-k8s-openshift-monitoring.apps.ganymade.cp.fyre.ib
 thanos-querier      thanos-querier-openshift-monitoring.apps.ganymade.cp.fyre.ibm.com             thanos-querier      web     reencrypt/Redirect   None
 
 oc get routes -n openshift-monitoring | grep 'prom\|graf'
+
+
+API links
+-----------
+CAMs(Catalog Asset Management) 	https://api.dataplatform.cloud.ibm.com/v2/cams/explorer/#!/Catalogs/listCatalogsV2
+	
+Watson Data API	https://cloud.ibm.com/apidocs/watson-data-api#creating-an-iam-bearer-token	
+IGC Rest explorer	https://host_server:port_number/ibm/iis/igc-rest-explorer
+
+https://cpd-wkc.apps.ganymade.cp.fyre.ibm.com/ibm/iis/igc-rest-explorer/
+	
+Watson studio lib	https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=lib-watson-studio-python	
+IA 	https://www.ibm.com/docs/en/iis/11.7?topic=api-http-overview
+https://www.ibm.com/docs/en/iis/11.7?topic=requests-get-functions-that-retrieve-content	
+
