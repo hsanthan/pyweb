@@ -108,7 +108,7 @@ oc get routes -n openshift-monitoring | grep 'prom\|graf'
 
 
 API links
------------
+------------
 CAMs(Catalog Asset Management) 	https://api.dataplatform.cloud.ibm.com/v2/cams/explorer/#!/Catalogs/listCatalogsV2
 	
 Watson Data API	https://cloud.ibm.com/apidocs/watson-data-api#creating-an-iam-bearer-token	
