@@ -1,0 +1,48 @@
+Oracle Amalthea
+---------------
+su - oracle
+export ORACLE_OWNER=oracle
+export   ORACLE_HOME=/app/oracle
+export ORACLE_SID=orcl
+export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4:$LD_LIBRARY_PATH
+export PATH=$LD_LIBRARY_PATH:$PATH
+source ~/.bashrc
+cd /opt/oracle/instantclient_21_4
+Sqlplus
+
+cd /app/oracle/bin
+[oracle@amalthea1 bin]$ ./lsnrctl start
+System parameter file is /app/oracle/network/admin/listener.ora
+vi /app/oracle/network/admin/listener.ora
+Added the following in listener.ora
+SID_LIST_orcl =
+  (SID_LIST =
+    (SID_DESC =
+      (ORACLE_HOME= /app/oracle)
+      (SID_NAME = orcl)
+    )
+  )
+
+
+[oracle@amalthea1 instantclient_21_4]$ sqlplus /nolog
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Wed Apr 6 15:39:21 2022
+Version 21.4.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+SQL> connect / as sysdba
+Connected to an idle instance.
+SQL> startup
+ORACLE instance started.
+
+Total System Global Area 4999608360 bytes
+Fixed Size		    8906792 bytes
+Variable Size		  905969664 bytes
+Database Buffers	 4076863488 bytes
+Redo Buffers		    7868416 bytes
+Database mounted.
+Database opened.
+
+[oracle@amalthea1 instantclient_21_4]$ sqlplus / as sysdba
+[oracle@amalthea1 instantclient_21_4]$ sqlplus test/test@orcl
