@@ -2,6 +2,8 @@ get bearer token
 ---------------
 curl -k -X POST -H "cache-control: no-cache" -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"password\"}" "https://cpd-wkc.apps.ganymade.cp.fyre.ibm.com//icp4d-api/v1/authorize"
 
+export BEARER_TOKEN=`curl -k -X POST -H 'cache-control: no-cache' -H 'Content-Type: application/json' -d '{"username":"admin","password":"password"}' 'https://cpd-wkc.apps.ganymade.cp.fyre.ibm.com/icp4d-api/v1/authorize'`
+
 watson data api -get categories with bearer token
 -------------------------------------------------
 curl -i -X GET https://cpd-wkc.apps.ganymade.cp.fyre.ibm.com/v3/categories -H  "accept: */*" -H  "Content-Type: */*" -H "Authorization: Bearer ${TOKEN}" -k
